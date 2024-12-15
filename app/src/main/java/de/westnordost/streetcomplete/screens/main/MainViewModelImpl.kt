@@ -257,7 +257,7 @@ class MainViewModelImpl(
         awaitClose { userLoginSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
-    override val isConnected: Boolean get() = internetConnectionState.isConnected || prefs.ignoreConnectionState
+    override val isConnected: Boolean get() = internetConnectionState.isConnected //|| prefs.ignoreConnectionState
 
     override fun upload() {
         if (isLoggedIn.value) {
