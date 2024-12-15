@@ -36,6 +36,7 @@ abstract class SettingsViewModel : ViewModel() {
 
     abstract val resurveyIntervals: StateFlow<ResurveyIntervals>
     abstract val showAllNotes: StateFlow<Boolean>
+    abstract val ignoreConnectionState: StateFlow<Boolean>
     abstract val autosync: StateFlow<Autosync>
     abstract val theme: StateFlow<Theme>
     abstract val keepScreenOn: StateFlow<Boolean>
@@ -47,6 +48,7 @@ abstract class SettingsViewModel : ViewModel() {
 
     abstract fun setResurveyIntervals(value: ResurveyIntervals)
     abstract fun setShowAllNotes(value: Boolean)
+    abstract fun setIgnoreConnectionState(value: Boolean)
     abstract fun setAutosync(value: Autosync)
     abstract fun setTheme(value: Theme)
     abstract fun setKeepScreenOn(value: Boolean)
@@ -100,6 +102,7 @@ class SettingsViewModelImpl(
     override val autosync = MutableStateFlow(prefs.autosync)
     override val theme = MutableStateFlow(prefs.theme)
     override val showAllNotes = MutableStateFlow(prefs.showAllNotes)
+    override val ignoreConnectionState = MutableStateFlow(prefs.ignoreConnectionState)
     override val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
     override val selectedLanguage = MutableStateFlow(prefs.language)
 
@@ -140,6 +143,7 @@ class SettingsViewModelImpl(
 
     override fun setResurveyIntervals(value: ResurveyIntervals) { prefs.resurveyIntervals = value }
     override fun setShowAllNotes(value: Boolean) { prefs.showAllNotes = value }
+    override fun setIgnoreConnectionState(value: Boolean) { prefs.showAllNotes = value }
     override fun setAutosync(value: Autosync) { prefs.autosync = value }
     override fun setTheme(value: Theme) { prefs.theme = value }
     override fun setKeepScreenOn(value: Boolean) { prefs.keepScreenOn = value }
