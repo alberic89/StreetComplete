@@ -10,7 +10,6 @@ import androidx.core.content.getSystemService
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import de.westnordost.streetcomplete.data.preferences.Preferences
 
 class InternetConnectionState(context: Context) {
     val isConnectedFlow: Flow<Boolean> = callbackFlow {
