@@ -227,7 +227,7 @@ class StreetCompleteApplication : Application() {
     }
 
     private val isConnected: Boolean
-        get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
+        get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true || prefs.ignoreConnectionState
 
     private fun clearTangramCache() {
         if (prefs.clearedTangramCache) return
