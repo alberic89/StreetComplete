@@ -32,7 +32,7 @@ class InternetConnectionState(context: Context) {
         awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
     }
 
-    private val prefs: Preferences by inject()
+    private val prefs by inject<Preferences>()
     private val ignoreConnectionState: Boolean get() = prefs.ignoreConnectionState
 
     val isConnected: Boolean get() =
