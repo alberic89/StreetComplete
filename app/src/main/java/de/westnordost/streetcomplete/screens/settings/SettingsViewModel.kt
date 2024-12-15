@@ -118,6 +118,7 @@ class SettingsViewModelImpl(
         listeners += prefs.onAutosyncChanged { autosync.value = it }
         listeners += prefs.onThemeChanged { theme.value = it }
         listeners += prefs.onAllShowNotesChanged { showAllNotes.value = it }
+        listeners += prefs.onIgnoreConnectionStateChanged { ignoreConnectionState.value = it }
         listeners += prefs.onKeepScreenOnChanged { keepScreenOn.value = it }
         listeners += prefs.onLanguageChanged { selectedLanguage.value = it }
 
