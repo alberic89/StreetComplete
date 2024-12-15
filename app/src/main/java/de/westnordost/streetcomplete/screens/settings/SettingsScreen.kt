@@ -117,17 +117,6 @@ fun SettingsScreen(
                         onCheckedChange = { viewModel.setShowAllNotes(it) }
                     )
                 }
-
-                Preference(
-                    name = stringResource(R.string.pref_ignore_connectivity_state),
-                    onClick = { viewModel.setIgnoreConnectionState(!ignoreConnectionState) },
-                    description = stringResource(R.string.pref_ignore_connectivity_state_summary)
-                ) {
-                    Switch(
-                        checked = ignoreConnectionState,
-                        onCheckedChange = { viewModel.setIgnoreConnectionState(it) }
-                    )
-                }
             }
 
             PreferenceCategory(stringResource(R.string.pref_category_communication)) {
@@ -182,6 +171,17 @@ fun SettingsScreen(
                     onClick = { showRestoreHiddenQuestsConfirmation = true },
                     description = stringResource(R.string.pref_title_quests_restore_hidden_summary, hiddenQuestCount)
                 )
+                
+                Preference(
+                    name = stringResource(R.string.pref_ignore_connectivity_state),
+                    onClick = { viewModel.setIgnoreConnectionState(!ignoreConnectionState) },
+                    description = stringResource(R.string.pref_ignore_connectivity_state_summary)
+                ) {
+                    Switch(
+                        checked = ignoreConnectionState,
+                        onCheckedChange = { viewModel.setIgnoreConnectionState(it) }
+                    )
+                }
             }
 
             if (BuildConfig.DEBUG) {
