@@ -144,7 +144,7 @@ class SettingsViewModelImpl(
 
     override fun setResurveyIntervals(value: ResurveyIntervals) { prefs.resurveyIntervals = value }
     override fun setShowAllNotes(value: Boolean) { prefs.showAllNotes = value }
-    override fun setIgnoreConnectionState(value: Boolean) { prefs.showAllNotes = value }
+    override fun setIgnoreConnectionState(value: Boolean) { prefs.ignoreConnectionState = value }
     override fun setAutosync(value: Autosync) { prefs.autosync = value }
     override fun setTheme(value: Theme) { prefs.theme = value }
     override fun setKeepScreenOn(value: Boolean) { prefs.keepScreenOn = value }
