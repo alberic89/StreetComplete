@@ -54,6 +54,7 @@ fun SettingsScreen(
 
     val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
     val showAllNotes by viewModel.showAllNotes.collectAsState()
+    val ignoreConnectionState by viewModel.ignoreConnectionState.collectAsState()
     val autosync by viewModel.autosync.collectAsState()
     val theme by viewModel.theme.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
@@ -114,6 +115,17 @@ fun SettingsScreen(
                     Switch(
                         checked = showAllNotes,
                         onCheckedChange = { viewModel.setShowAllNotes(it) }
+                    )
+                }
+
+                Preference(
+                    name = stringResource(R.string.pref_ignore_connectivity_state),
+                    onClick = { viewModel.setIgnoreConnectionState(!ignoreConnectionState) },
+                    description = stringResource(R.string.pref_ignore_connectivity_state_summary)
+                ) {
+                    Switch(
+                        checked = ignoreConnectionState,
+                        onCheckedChange = { viewModel.setIgnoreConnectionState(it) }
                     )
                 }
             }
