@@ -10,6 +10,7 @@ import androidx.core.content.getSystemService
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import de.westnordost.streetcomplete.data.preferences.Preferences
 
 class InternetConnectionState(context: Context) {
     val isConnectedFlow: Flow<Boolean> = callbackFlow {
@@ -30,8 +31,10 @@ class InternetConnectionState(context: Context) {
         awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
     }
 
+    private val ignoreConnectionState: Boolean get() = prefs.ignoreConnectionState
+
     val isConnected: Boolean get() =
-        connectivityManager.activeNetworkInfo?.isConnected == true
+        connectivityManager.activeNetworkInfo?.isConnected == true || ignoreConnectionState
 
     private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
 }
