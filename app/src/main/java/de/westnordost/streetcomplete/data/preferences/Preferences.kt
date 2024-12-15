@@ -36,6 +36,8 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
 
+    var ignoreConnectionState: Boolean by prefs.boolean(IGNORE_CONNECTION_STATE, false)
+
     fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)
 
