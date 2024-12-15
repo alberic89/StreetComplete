@@ -7,11 +7,11 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import androidx.core.content.getSystemService
-import de.westnordost.streetcomplete.data.preferences.Preferences
+//import de.westnordost.streetcomplete.data.preferences.Preferences
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import org.koin.android.ext.android.inject
+//import org.koin.android.ext.android.inject
 
 class InternetConnectionState(context: Context) {
     val isConnectedFlow: Flow<Boolean> = callbackFlow {
@@ -32,11 +32,11 @@ class InternetConnectionState(context: Context) {
         awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
     }
 
-    private val prefs by inject<Preferences>()
-    private val ignoreConnectionState: Boolean get() = prefs.ignoreConnectionState
+    //private val prefs by inject<Preferences>()
+    //private val ignoreConnectionState: Boolean get() = prefs.ignoreConnectionState
 
     val isConnected: Boolean get() =
-        connectivityManager.activeNetworkInfo?.isConnected == true || ignoreConnectionState
+        connectivityManager.activeNetworkInfo?.isConnected == true //|| ignoreConnectionState
 
     private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
 }
