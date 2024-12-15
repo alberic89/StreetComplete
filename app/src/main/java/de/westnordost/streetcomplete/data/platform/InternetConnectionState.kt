@@ -38,5 +38,13 @@ class InternetConnectionState(context: Context) {
     val isConnected: Boolean get() =
         connectivityManager.activeNetworkInfo?.isConnected == true //|| ignoreConnectionState
 
+    if (connectivityManager != null) {
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            isConnected = true
+        }
+    }
+
     private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
 }
