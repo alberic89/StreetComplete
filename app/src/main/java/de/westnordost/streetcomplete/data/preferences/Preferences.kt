@@ -205,6 +205,7 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val THEME_SELECT = "theme.select"
         private const val LANGUAGE_SELECT = "language.select"
         private const val RESURVEY_INTERVALS = "quests.resurveyIntervals"
+        private const val IGNORE_CONNECTION_STATE = "connection.ignore_state"
 
         // login and user
         private const val OSM_USER_ID = "osm.userid"
