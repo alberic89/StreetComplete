@@ -35,16 +35,17 @@ class InternetConnectionState(context: Context) {
     //private val prefs by inject<Preferences>()
     //private val ignoreConnectionState: Boolean get() = prefs.ignoreConnectionState
 
-    val isConnected: Boolean get() =
-        connectivityManager.activeNetworkInfo?.isConnected == true //|| ignoreConnectionState
-
-    if (connectivityManager != null) {
-        val capabilities =
-            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-        if (capabilities != null) {
-            isConnected = true
-        }
+    val capabilities =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    if (capabilities != null) {
+        private val overideConnection: Boolean get() = true
     }
+
+    val isConnected: Boolean get() =
+        connectivityManager.activeNetworkInfo?.isConnected == true || overideConnection
+    //|| ignoreConnectionState
+
+    
 
     private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
 }
